@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="IFridge.MVVM.Views.DrinkView"
+             xmlns:local="clr-namespace:IFridge.MVVM.ViewModels"
+             Title="Drank toevoegen">
+    <ContentPage.BindingContext>
+        <local:DrinkViewModel/>
+    </ContentPage.BindingContext>
+
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="5">
+
+            <Picker 
+                Title="Kies een koelkast"         
+                HorizontalOptions="Center"
+                ItemsSource="{Binding Fridges}"
+                ItemDisplayBinding="{Binding name}"
+                SelectedItem="{Binding SelectedFridge , Mode=TwoWay}"/>
+            <Label 
+                Text="Drank naam"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+            <Entry 
+                x:Name="DrankNameEntry"
+                Placeholder="Kies je dranknaam"
+                WidthRequest="250"
+                Text="{Binding DrinkName , Mode=TwoWay}"/>
+            <Label 
+                Text="Hoeveelheid"
+                
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+            <Label
+                x:Name="SliderNumber"
+               HorizontalOptions="Center"
+                
+                Text="{Binding Quantity, Mode=TwoWay}"/>
+            <Slider 
+                ValueChanged="Slider_ValueChanged"
+                Minimum="0"
+                Maximum="50" 
+                WidthRequest="250"  
+                HorizontalOptions="Center"
+    
+                />
+
+            <Button 
+                x:Name="AddButton" 
+                Text="Drank toevoegen" 
+                WidthRequest="250"
+                BackgroundColor="Blue"
+                TextColor="White"
+           
+                Command="{Binding AddOrUpdateCommand}" 
+                Clicked="AddButton_Clicked"/>
+            <Button
+                x:Name="DeleteButton" 
+                Text="Verwijderen" 
+                TextColor="White"
+                Command="{Binding DeleteCommand}" 
+                BackgroundColor="Red"
+                WidthRequest="250"/>
+            
+            <AbsoluteLayout>
+                <ImageButton
+                    x:Name="TakePhoto" 
+                    Source="camera_svgrepo_com.png"
+                    Scale="0.6"
+                  
+                    Command="{Binding CaptureDrinkPhotoCommand, Mode=TwoWay}"
+                    AbsoluteLayout.LayoutBounds="0.5, 0, 100, 100" 
+                    AbsoluteLayout.LayoutFlags="PositionProportional"
+                        />
+
+            </AbsoluteLayout>
+            <StackLayout>
+                <Image
+                x:Name="DrinkPhoto" 
+                 Source="{Binding CompleteDrinkPhotoPath}"
+                IsVisible="{Binding HasPhoto}"
+                HeightRequest="250"
+                VerticalOptions="FillAndExpand"/>
+            </StackLayout>
+                
+
+        </VerticalStackLayout>
+        
+    </ScrollView>
+        
+    
+</ContentPage>

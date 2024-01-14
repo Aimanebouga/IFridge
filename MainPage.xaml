@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="IFridge.MainPage"
+             Title="Home">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Spacing="25"
+            Padding="35.0"
+            VerticalOptions="Start"
+            HorizontalOptions="Center">
+
+            <Button
+                x:Name="GoToFridges" 
+                Text="Koelkast toevoegen"
+                TextColor="White"
+                Clicked="GoToFridges_Clicked"
+                BackgroundColor="Blue"
+                WidthRequest="300"/>
+            <Button 
+                x:Name="GoToDrinks"
+                Text="Drank toevoegen" 
+                Clicked="GoToDrinks_Clicked"
+                BackgroundColor="Blue"
+                TextColor="White"
+                WidthRequest="300"/>
+            <Button 
+                x:Name="AllFridges" 
+                Text="Alle koelkasten" 
+                Clicked="AllFridges_Clicked"
+                BackgroundColor="Blue"
+                TextColor="White"
+                WidthRequest="300"/>
+            <AbsoluteLayout>
+                <ImageButton 
+                   x:Name="GoToQrPage"
+                   Source="qr_code_svgrepo_com.png"
+                   Scale="0.5"
+                   Clicked="GoToQrPage_Clicked"
+                   AbsoluteLayout.LayoutBounds="0.5, 0, 100, 100" 
+                   AbsoluteLayout.LayoutFlags="PositionProportional"
+        />
+            </AbsoluteLayout>
+
+
+
+
+
+
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
