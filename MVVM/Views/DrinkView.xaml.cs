@@ -17,19 +17,7 @@ public partial class DrinkView : ContentPage
         
         
 	}
-    private void OnDrinkQuantityEntryTextChanged(object sender, TextChangedEventArgs e)
-    {
-        if (!IsNumeric(e.NewTextValue))
-        {
-            DisplayAlert("Fout", "Voer alleen getallen in.", "OK");
-            ((Entry)sender).Text = e.OldTextValue;
-        }
-    }
-
-    private bool IsNumeric(string text)
-    {
-        return double.TryParse(text, out _);
-    }
+    
 
     private async void AddButton_Clicked(object sender, EventArgs e)
     {
@@ -44,12 +32,7 @@ public partial class DrinkView : ContentPage
         await toast.Show(cancellationTokenSource.Token);    
     }
 
-    private async void TestButton_Clicked(object sender, EventArgs e)
-    {
-        string result = await DisplayPromptAsync("Question 1", "What's your name?");
-
-        drinkViewModel.CurrentDrink.quantity -= int.Parse(result);
-    }
+   
 
     private void Slider_ValueChanged(object sender, ValueChangedEventArgs e)
     {
